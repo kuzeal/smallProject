@@ -8,73 +8,81 @@
     </head>
 
     <body>
+
+
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Contact Manager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="signup.php">Sign Up</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
+            <a class="nav-item nav-link " href="index.php">Home</a>
+            <a class="nav-item nav-link" href="login.php">Log In</a>
+            <a class="nav-item nav-link" href="logout.php">Log Out</a>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown link
+               Manage Contacts
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="addcontact.php">Add Contact</a>
+                <a class="dropdown-item" href="#">Search Contacts</a>
+                <a class="dropdown-item" href="#">Delete Contacts</a>
               </div>
             </li>
           </div>
         </div>
       </nav>
 
+
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <form action="signup.php" method="post">
-            <div class="form-group">
-              <label for="emailInput">Email address</label>
-              <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="inputUsername">Username</label>
+                <input type="text" class="form-control" id="iputUsername" placeholder="">
+              </div>
             </div>
-            <label for="passwordInput">Password</label>
-            <input type="password" id="passwordInput" class="form-control" aria-describedby="passwordHelpBlock">
-            <small id="passwordHelpBlock" class="form-text text-muted">
-              Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
-            </small>
-            <br>
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="inputFirstName">First Name</label>
+                <input type="text" class="form-control" id="inputFirstName" placeholder="First Name">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputLasttName">Last Name</label>
+                <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputEmail4">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+              </div>
             </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-5">
+                <label for="inputCity">Phone Number</label>
+                <input type="text" class="form-control" id="inputPhoneNum" placeholder="">
+              </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
           </form>
 
 
-          <?php
-
-            if(isset($_POST['signup'])){
-
-              $email = $_POST['emailInput'];
-              $password = $_POST['passwordInput'];
-
-              $conn = new PDO("mysql:host=localhost;dbname=website", "root", "");
-
-              $newUser = $conn->prepare("INSERT INTO users (email, password) VALUES (:email, :password)");
-
-              $newUser->bindParam(":email", $email);
-              $newUser->bindParam(":password", $password);
-              $newUser->execute();
-            }
-
-           ?>
-
           <br>
-          <p class="font-weight-normal">Already a member? Log in <a href="">here.</a></p>
+          <p class="font-weight-normal">Already a member? Log in <a href="login.php"><u>here.</u></a></p>
 
         </div>
       </div>
+
+
 
 
     </body>
